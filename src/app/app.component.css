@@ -1,0 +1,41 @@
+p {
+  font-family: Lato;
+}
+
+.margin-right-10 {
+  margin-right: 10px;
+}
+
+.example-button-row button {
+  margin: 10px;
+  font-family: monospace;
+}
+
+.example-button-row {
+   margin-left: 150px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 15px;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  background-color: white;
+}
+.mat-accordion {
+  margin: 20px;
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+.mat-raised-button.mat-primary  {
+  background-color: green !important;
+}

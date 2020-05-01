@@ -1,0 +1,164 @@
+<link href="node_modules/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">
+
+<div>
+	<mat-toolbar>COVID Statistics</mat-toolbar>
+
+</div>
+<div>
+
+	<!-- <div *ngIf="loading">
+		<mat-spinner></mat-spinner>
+	</div> -->
+
+	<!-- 
+<div *ngIf="summary">
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Global Summary</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <section>
+  <div class="example-button-row">
+    <button mat-raised-button color="accent">Total Confirmed: {{summary.Global.TotalConfirmed}}</button>
+    <button mat-raised-button color="primary">Total Recovered: {{summary.Global.TotalRecovered}}</button>
+    <button mat-raised-button color="warn">Total Deaths: {{summary.Global.TotalDeaths}}</button>
+  </div>
+</section>
+  </mat-card-content>
+  
+</mat-card>
+</div> -->
+
+	<!-- <div>
+
+
+  <h4>Select Country</h4>
+<mat-form-field>
+  <mat-label>Countries</mat-label>
+  <mat-select (selectionChange)="onCountrySelect($event)" [(ngModel)]="selectedValue">
+    <mat-option *ngFor="let country of countryList" [value]="country.Slug">
+      {{country.Country}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+</div> -->
+
+	<!-- 
+<div *ngIf="selectedCountryStatus.length">
+
+  <mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Status: {{selectedValue}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+   
+  <button mat-raised-button color="primary">Total Recovered: {{selectedCountryStatus[selectedCountryStatus.length-2].Confirmed}}</button>
+    <button mat-raised-button color="accent">Total Confirmed: {{summary.Global.TotalConfirmed}}</button>
+    <button mat-raised-button color="warn">Total Deaths: {{summary.Global.TotalDeaths}}</button>
+
+  </mat-card-content>
+  <mat-card-actions>
+    
+  </mat-card-actions>
+</mat-card>
+</div> -->
+
+	<!-- <div *ngIf="!loading"> -->
+
+	<div *ngIf="summary" class="global-summary">
+		<mat-accordion>
+			<mat-expansion-panel (opened)="globalPanelOpened()" (closed)="globalPanelOpenState = false">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						Global Stats
+					</mat-panel-title>
+					<mat-panel-description>
+					</mat-panel-description>
+				</mat-expansion-panel-header>
+
+				<section>
+					<div class="example-button-row">
+						<button mat-raised-button>Total Confirmed: {{summary.Global?.TotalConfirmed}}</button>
+						<button mat-raised-button color="primary">Total Recovered: {{summary.Global?.TotalRecovered}}</button>
+						<button mat-raised-button color="warn">Total Deaths: {{summary.Global?.TotalDeaths}}</button>
+					</div>
+				</section>
+
+        	<div style="height:400px;overflow:auto;">
+					<table style="width:100%">
+
+						<tr>
+							<th > Country</th>
+              <th > Total Confirmed </th>
+              <th > Total Recovered</th>
+              <th > Total Deaths</th>
+              <th > Date </th>
+						</tr>
+						<tr *ngFor="let country of summary.Countries">
+							<td >{{country.Country}}</td>
+              <td >{{country.TotalConfirmed}}</td>
+              <td >{{country.TotalRecovered}}</td>
+              <td >{{country.TotalDeaths}}</td>
+              <td >{{country.Date | date }}</td>
+						</tr>
+
+					</table>
+				</div>
+
+
+			</mat-expansion-panel>
+		</mat-accordion>
+	</div>
+
+
+	<div>
+		<mat-accordion>
+			<mat-expansion-panel (opened)="panelOpened()" (closed)="panelOpenState = false">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						India Stats
+					</mat-panel-title>
+					<mat-panel-description>
+					</mat-panel-description>
+				</mat-expansion-panel-header>
+				<!-- <section *ngIf="indiaSummary">
+						<div class="example-button-row" *ngFor="let item of indiaSummary.field; let index=i;">
+							<button mat-raised-button color="accent">{{item.name}} : {{indiaSummary.records[0][item.id]}}</button>
+						
+						</div>
+					</section> -->
+
+
+				<section *ngIf="indiaSummary">
+					<div class="example-button-row">
+						<button mat-raised-button> {{indiaSummary?.field[0].name}} : {{indiaSummary?.records[0].active_cases}} </button>
+						<button mat-raised-button color="primary">{{indiaSummary?.field[1].name}} : {{indiaSummary?.records[0].cured_discharged}}</button>
+						<button mat-raised-button color="accent">{{indiaSummary?.field[3].name}} : {{indiaSummary?.records[0].migrated}}</button>
+						<button mat-raised-button color="warn">{{indiaSummary?.field[2].name}} : {{indiaSummary?.records[0].deaths}}</button>
+					</div>
+				</section>
+
+				<div style="height:400px;overflow:auto;">
+					<table style="width:100%" *ngIf="indiaStats">
+						<tr>
+							<th *ngFor="let field of indiaStats.field; let j=index;"> 
+              <ng-template [ngIf]="j<indiaStats.field.length-1">{{field.name}}</ng-template>  
+              </th>
+						</tr>
+						<tr *ngFor="let data of indiaStats.data">
+							<td *ngFor="let d of data; let i=index;">
+                <ng-template [ngIf]="i<data.length-1" > 
+                  <p [ngStyle]="{'color': d > 800 ? 'red' : (d>100 ? 'orange' : ( d< 10 ? 'green' : null)) }">
+                  {{d}}
+</p>
+                </ng-template>
+              </td>
+						</tr>
+					</table>
+				</div>
+			</mat-expansion-panel>
+		</mat-accordion>
+	</div>
+
+	<!-- </div> -->
