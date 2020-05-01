@@ -99,18 +99,13 @@ globalPanelOpened(): void {
 }
 
   panelOpened(): void {
-    //console.log('opened');
     this.loading = true;
     this.panelOpenState = true;
-    // this.helplineService.getIndiaStats().pipe(finalize(()=> {this.loading = false;})).subscribe((data) => {
-    //    this.indiaStats = data;
-    //  });
     forkJoin(this.helplineService.getIndiaStats(), this.helplineService.getIndiaSummary())
     .pipe(finalize(() => {this.loading = false;})).subscribe((data) => {
       this.indiaStats = data[0];
       this.indiaSummary = data[1];
-
-    })
+    });
   }
 
 }
